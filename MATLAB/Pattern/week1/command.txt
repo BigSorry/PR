@@ -1,0 +1,20 @@
+>> delfigs % delete all figures
+>> obj1 = kimia_images % load 12 objects for 18 classes
+>> obj1 = seldat(obj1,[3:3:18]); % select the classes 3,6,9,12,15 and 18
+>> figure(1); show(obj1); % show raw data
+>> obj2 = im_box(obj1,0,1); % put objects in a square box
+% (aspect ratio = 1)
+>> figure(2); show(obj2); % to create square images
+>> obj3 = im_rotate(obj2); % rotate images to same orientation
+>> figure(3); show(obj3); % show data
+>> obj4 = im_rotate(obj3);% resize images to 20 x 20 pixels
+>> figure(4); show(obj4); % show data
+>> obj5 = im_rotate(obj4); % create empty box around objects
+>> figure(5); show(obj5); % show data
+>> showfigs % show all figures on the screen
+
+obj = seldat(obj1,2) % Use just class 2
+>> obj = obj*preproc % normalize
+>> figure(1); show(obj); % show data
+>> mean_set = im_mean(obj) % measure (x,y) of centers of gravity
+>> mean_data2 = double(mean_set) % convert them (unpack)
